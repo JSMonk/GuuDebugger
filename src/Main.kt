@@ -19,8 +19,7 @@ suspend fun main(args: Array<String>) {
       try {
          val tokens = it.getTokensSequence(filepath)
          val ast = tokens.toAbstractSyntaxTree(filepath)
-         val table = SymbolTable()
-         table.compile(ast)
+         val table = SymbolTable().also { it.compile(ast) }
          val executor = Debugger(table, ReplDebugCommander(filepath))
          executor.execute(runProgram(filepath))
       } catch (e: PositionedException) {
