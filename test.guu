@@ -1,0 +1,7 @@
+sub main
+    set a 1
+    call foo
+    print a
+
+sub foo
+    set a "Hello, World"
