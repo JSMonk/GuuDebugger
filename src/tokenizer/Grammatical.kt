@@ -1,10 +1,10 @@
 package tokenizer
 
-enum class Keyword {
-    SET,
-    SUB,
-    CALL,
-    PRINT
+enum class Keyword(val value: String) {
+    SET("set"),
+    SUB("sub"),
+    CALL("call"),
+    PRINT("print")
 }
 
 object Grammatic {

@@ -4,7 +4,6 @@ import compiler.Entity
 import compiler.SymbolTable
 import debugger.DebugCommand
 import debugger.DebugCommander
-import extended.String.toSafeUpperCase
 import interpretator.CallStack
 import repl.IllegalDebuggerCommand
 import repl.Repl
@@ -38,12 +37,12 @@ class ReplDebugCommander(filepath: String) : Repl(filepath), DebugCommander {
     override suspend fun getDebugCommand(position: exceptions.Position): DebugCommand {
         while (true) {
             print("Now we at line \"${position.line + 1u}\", enter cmd: ")
-            when (val command = io.nextLine().toSafeUpperCase()) {
-                ReplDebuggerCommands.I.name -> return DebugCommand.STEP_INTO
-                ReplDebuggerCommands.O.name -> return DebugCommand.STEP_OVER
-                ReplDebuggerCommands.TRACE.name -> return DebugCommand.SHOW_STACK_TRACE
-                ReplDebuggerCommands.VAR.name -> return DebugCommand.SHOW_VARIABLES
-                ReplCommands.X.name -> return DebugCommand.BREAK
+            when (val command = io.nextLine()) {
+                ReplDebuggerCommands.I.value -> return DebugCommand.STEP_INTO
+                ReplDebuggerCommands.O.value -> return DebugCommand.STEP_OVER
+                ReplDebuggerCommands.TRACE.value -> return DebugCommand.SHOW_STACK_TRACE
+                ReplDebuggerCommands.VAR.value -> return DebugCommand.SHOW_VARIABLES
+                ReplCommands.X.value -> return DebugCommand.BREAK
                 else -> super.executeCommand(command)
             }
         }

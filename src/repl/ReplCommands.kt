@@ -1,17 +1,23 @@
 package repl
 
 interface ReplCommand : Describable {
-    val name: String
+    val value: String
 }
 
-enum class ReplCommands(override val description: String): ReplCommand {
-    X("exit"),
-    HELP("show all available commands"),
+enum class ReplCommands(
+        override val value: String,
+        override val description: String
+): ReplCommand {
+    X("x", "exit"),
+    HELP("help","show all available commands"),
 }
 
-enum class ReplDebuggerCommands(override val description: String): ReplCommand {
-    I("step into"),
-    O("step over"),
-    VAR("show variables"),
-    TRACE("show stack trace")
+enum class ReplDebuggerCommands(
+        override val value: String,
+        override val description: String
+): ReplCommand {
+    I("i", "step into"),
+    O("o", "step over"),
+    VAR("var", "show variables"),
+    TRACE("trace","show stack trace")
 }

@@ -36,7 +36,7 @@ open class Repl(private val filepath: String) {
     }
 
     protected fun ReplCommand.toPresentableString() =
-            name.toLowerCase().let { "* $it${"\t".repeat(if (it.length < 2) 2 else 1)}- $description" }
+            value.let { "* $it${"\t".repeat(if (it.length < 2) 2 else 1)}- $description" }
 
     protected open fun showCommands() {
         println("Available Commands:")
